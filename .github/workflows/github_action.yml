@@ -16,7 +16,7 @@ jobs:
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.4.1
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvX/wMVkAvlBuiOjgIF9H3vCyoCEJKxbVnKh7sDWAITj5ozW5TRwYdBwoTNFBR4QFclIFIvGVdZt/g+QGzlHL1LJwXf69qqXQbxFbj+ftsXBCiEuZ46LwCTX+7lba3Lx+Oah4+TGklaotl67B3NnGIejX6bKVrJSzR7Uirb79IM704MUs8zrc2B6LZKXB3W3s0fZcZciMMlDEP1tlcaAu8J05XKeQhNScXFcHMS2shVJWTHtun7Q22awPyn1UXFnppOGo/+soX9SA75UK7jWCMH9x3JgTKGnwXg9khq7iiSxqrj8b3I5Lk/Kxfp6W4OFhtmSo7MDlgZMrmNVY2378Ld6VSIQ/nS0YSxPBWO4xUslAZgT34q4PKz6pi7hBO7IA4UttDJjBImgD5Fs4ViPp1nI+RZkA8OlrDr5PftOWvTtTog4WmshHuBoYROU+Lcbqrc3FOIZx1+hb00zWQCZmVKswZqg58qiJcY+YxRNnhS2xc2G/nJOkjhslz6hTbn2s= ubuntu@ip-10-1-1-220 }}
 
       - name: Deploy to EC2 using rsync
         run: |
@@ -37,5 +37,5 @@ jobs:
         with:
           status: ${{ job.status }}
           message: 'Deployment completed!'
-          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook_url: ${{ secrets.https://hexa-urf4241.slack.com/archives/C057FQ920AG }}
 
