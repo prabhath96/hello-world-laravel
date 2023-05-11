@@ -37,5 +37,5 @@ jobs:
         with:
           status: ${{ job.status }}
           message: 'Deployment completed!'
-          webhook_url: ${{ secrets.https://hexa-urf4241.slack.com/archives/C057FQ920AG }}
+          webhook_url: ${{ secrets.https://hooks.slack.com/services/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 }}
 
