@@ -1,1 +1,41 @@
+name: Deploy to EC2 and notify Slack
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to EC2 using rsync
+        run: |
+          rsync -avz --delete \
+            --exclude '.env' \
+            --exclude 'vendor/' \
+            --exclude 'node_modules/' \
+            --exclude 'storage/' \
+            ./ ubuntu@18.117.94.108:/hello-world-laravel
+
+  notify-slack:
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack notification
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          message: 'Deployment completed!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
