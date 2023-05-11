@@ -15,4 +15,4 @@ jobs:
         with:
           status: ${{ github.event.deployment_status.state }}
           message: 'Deployment of branch ${{ github.event.deployment_status.ref }} completed!'
-          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook_url: ${{ secrets.https://hexa-urf4241.slack.com/archives/C057FQ920AG }}
