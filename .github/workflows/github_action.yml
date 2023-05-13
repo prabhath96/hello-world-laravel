@@ -27,15 +27,15 @@ jobs:
             --exclude 'storage/' \
             ./ ubuntu@18.117.94.108:/hello-world-laravel
 
- # notify-slack:
-  #  needs: deploy
- #   runs-on: ubuntu-latest
-#
-#    steps:
- #     - name: Send Slack notification
-#        uses: rtCamp/action-slack-notify@v2
- #       with:
- #         status: ${{ job.status }}
- #         message: 'Deployment completed!'
- #         webhook_url: ${{ secrets.https://hooks.slack.com/services/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 }}
+  notify-slack:
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack notification
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          message: 'Deployment completed!'
+          webhook_url: ${{ secrets.https://hooks.slack.com/services/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 }}
 
